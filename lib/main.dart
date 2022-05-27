@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tss/simple_appbar.dart';
+
+import 'flexible.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,21 +32,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final double barHeight = 66.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget> [
-             Text(
-              ""
-            ),
-          ],
-        ),
+      // appBar: AppBar(
+        // title: Text(widget.title),
+      // ),
+      body: const CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: <Widget>[
+          SliverAppBar(
+            
+            title: MyAppBar(),
+            pinned: true,
+              expandedHeight: 210.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: MyFlexiableAppBar(),
+              ),
+            
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
