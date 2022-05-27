@@ -2,5 +2,5 @@
 
 A new weird project. 👀
 
-## Starter kit 🐾 to something to something awesome.!
+## Starter kit 🐾 to something awesome.!
 
