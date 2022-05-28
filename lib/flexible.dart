@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyFlexiableAppBar extends StatelessWidget {
   final double appBarHeight = 100.0;
 
-  const MyFlexiableAppBar();
+   const MyFlexiableAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

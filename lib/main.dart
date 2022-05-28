@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:tss/database/database.dart';
 import 'package:tss/simple_appbar.dart';
 
-import 'database/st/funda.dart';
 import 'flexible.dart';
 
 void main() {
-  final HttpLink linky = HttpLink(
-      funda);
+  final HttpLink link4 = HttpLink(funda);
 
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
-      link: linky,
+      link: link4,
       cache: GraphQLCache(
         store: InMemoryStore(),
       ),
@@ -22,6 +21,7 @@ void main() {
     client: client,
     child: const MyApp(),
   );
+
   runApp(app);
 }
 
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
       body: Query(
         options: QueryOptions(
-          document: gql(funda),
+          document: gql(money),
         ),
         builder: (QueryResult result, {fetchMore, refetch}) {
           //
@@ -91,8 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
           }
 
           final stuff = result.data?['customers'];
-          // print(roses);
 
+          print(stuff);
           //
 
           return const CustomScrollView(
