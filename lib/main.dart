@@ -96,8 +96,8 @@ class _MyHomePageState extends State<MyHomePage> {
           }
 
           final stuff = result.data?['customers'];
-          final sf = stuff['index'];
-            //TODO: fix length"
+          // final sf = stuff[index];
+          //TODO: fix length"
           // print(stuff);
           //
 
@@ -115,9 +115,11 @@ class _MyHomePageState extends State<MyHomePage> {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                    return ListView();
+                    final damage = stuff[index];
+                    print(damage['street']);
+                    return Text(damage['tsr']);
                   },
-                  childCount: stuff,
+                  childCount: stuff.length,
                 ),
               ),
             ],
