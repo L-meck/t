@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyFlexiableAppBar extends StatelessWidget {
-  final double appBarHeight = 100.0;
+  final double appBarHeight = 30.0;
 
-   const MyFlexiableAppBar({Key? key}) : super(key: key);
+  const MyFlexiableAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,11 @@ class MyFlexiableAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const <Widget>[
               Text(
-                "Customer Count",
+                '⚓',
+                style: TextStyle(color: Colors.white, fontSize: 28),
+              ),
+              Text(
+                "Your Customer Count",
                 style: TextStyle(
                     color: Colors.white, fontFamily: 'Poppins', fontSize: 28.0),
               ),
@@ -32,17 +36,17 @@ class MyFlexiableAppBar extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                     fontSize: 36.0),
               ),
-              Text("Incentive Amount",//TODO: Eligible for amount
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontSize: 28.0)),
-              Text("Ksh 10,000",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w800,
-                      fontSize: 36.0)),
+              // Text("Incentive Amount",//TODO: Eligible for amount
+              //     style: TextStyle(
+              //         color: Colors.white,
+              //         fontFamily: 'Poppins',
+              //         fontSize: 28.0)),
+              // Text("Ksh 10,000",
+              //     style: TextStyle(
+              //         color: Colors.white,
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w800,
+              //         fontSize: 36.0)),
             ],
           ),
           // Row(
