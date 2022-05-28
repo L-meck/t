@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:tss/database/database.dart';
 import 'package:tss/simple_appbar.dart';
 
@@ -69,12 +70,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Column(
               children: const [
                 Spacer(),
+                Icon(
+                  Iconsax.home_wifi,
+                  size: 40,
+                ),
                 Text(
-                  'Kindly Check Your',
+                  'Check Your',
                   style: TextStyle(fontSize: 20),
                 ),
                 Text(
-                  'Internet Connection',
+                  'Internet Connection then Restart',
                   style: TextStyle(fontSize: 20),
                 ),
                 Spacer(),
@@ -91,14 +96,15 @@ class _MyHomePageState extends State<MyHomePage> {
           }
 
           final stuff = result.data?['customers'];
-
-          print(stuff);
+          final sf = stuff['index'];
+            //TODO: fix length"
+          // print(stuff);
           //
 
-          return const CustomScrollView(
-            physics: BouncingScrollPhysics(),
+          return CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             slivers: <Widget>[
-              SliverAppBar(
+              const SliverAppBar(
                 title: MyAppBar(),
                 pinned: true,
                 expandedHeight: 210.0,
@@ -106,12 +112,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   background: MyFlexiableAppBar(),
                 ),
               ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return ListView();
+                  },
+                  childCount: stuff,
+                ),
+              ),
             ],
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // Refetch();
+        },
         tooltip: 'Refresh',
         child: const Icon(Icons.workspaces_outlined),
       ),
