@@ -116,8 +116,53 @@ class _MyHomePageState extends State<MyHomePage> {
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
                     final damage = stuff[index];
-                    print(damage['street']);
-                    return Text(damage['tsr']);
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: DataTable(
+                        columns: const <DataColumn>[
+                          DataColumn(
+                            label: Text('Account No.'),
+                          ),
+                          DataColumn(
+                            label: Text('Customer Name'),
+                          ),
+                          DataColumn(
+                            label: Text('Street'),
+                          ),
+                          DataColumn(
+                            label: Text('Phone Number'),
+                          ),
+                          DataColumn(
+                            label: Text('TSR'),
+                          ),
+                          DataColumn(
+                            label: Text('Low Gas'),
+                          ),
+                          DataColumn(
+                            label: Text('Low Battery'),
+                          ),
+                          DataColumn(
+                            label: Text('Grams Per Day'),
+                          ),
+                          DataColumn(label: Text('Days Since Last Task')),
+                        ],
+                        rows: <DataRow>[
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(damage['accountNumber'])),
+                              DataCell(Text(damage['customerName'])),
+                              DataCell(Text(damage['street'])),
+                              DataCell(Text(damage['phoneNumber'])),
+                              DataCell(Text(damage['tsr'])),
+                              DataCell(Text(damage['lowGas'])),
+                              DataCell(Text(damage['lowBattery'])),
+                              DataCell(Text(damage['gramsPerDay'])),
+                              DataCell(Text(damage['daysSinceLastTask'])),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   childCount: stuff.length,
                 ),
