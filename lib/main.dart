@@ -55,9 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      // title: Text(widget.title),
-      // ),
       body: Query(
         options: QueryOptions(
           document: gql(money),
@@ -96,10 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
           }
 
           final stuff = result.data?['customers'];
-          // final sf = stuff[index];
-          //TODO: fix length"
-          // print(stuff);
-          //
 
           return CustomScrollView(
             physics: const BouncingScrollPhysics(),
@@ -109,7 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 pinned: true,
                 expandedHeight: 210.0,
                 flexibleSpace: FlexibleSpaceBar(
-                  background: MyFlexiableAppBar(),
+                  background: MyFlexibleAppBar(
+                    numberOfCustomers: "530",
+                    customerCount: "Your Customer Count",
+                    ),
                 ),
               ),
               SliverList(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
-class MyFlexiableAppBar extends StatelessWidget {
+class MyFlexibleAppBar extends StatelessWidget {
   final double appBarHeight = 30.0;
 
-  const MyFlexiableAppBar({Key? key}) : super(key: key);
+  final numberOfCustomers, customerCount;
+
+  const MyFlexibleAppBar({Key? key, this.numberOfCustomers, this.customerCount}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +21,23 @@ class MyFlexiableAppBar extends StatelessWidget {
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
+            children: <Widget>[
+              const Text(
                 '⚓',
                 style: TextStyle(color: Colors.white, fontSize: 28),
               ),
-              Text(
-                "Your Customer Count",
-                style: TextStyle(
+              Text( customerCount,
+                style: const TextStyle(
                     color: Colors.white, fontFamily: 'Poppins', fontSize: 28.0),
               ),
-              Text(
-                "530",
-                style: TextStyle(
+               Text(
+                numberOfCustomers,
+                style: const TextStyle(
                     color: Colors.white,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w800,
-                    fontSize: 36.0),
+                    fontSize: 36.0,
+                    ),
               ),
               // Text("Incentive Amount",//TODO: Eligible for amount
               //     style: TextStyle(

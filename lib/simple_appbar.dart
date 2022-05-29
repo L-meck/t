@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 class MyAppBar extends StatelessWidget {
   final double barHeight = 66.0;
 
-  const MyAppBar();
+   const MyAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
