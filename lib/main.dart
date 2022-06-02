@@ -7,11 +7,11 @@ import 'package:tss/simple_appbar.dart';
 import 'flexible.dart';
 
 void main() {
-  final HttpLink link4 = HttpLink(funda);
+  final HttpLink linky = HttpLink(funda);
 
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
-      link: link4,
+      link: linky,
       cache: GraphQLCache(
         store: InMemoryStore(),
       ),
