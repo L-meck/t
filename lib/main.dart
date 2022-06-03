@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:tss/database/database.dart';
+import 'package:tss/issues.dart';
 import 'package:tss/simple_appbar.dart';
 
 import 'flexible.dart';
@@ -87,12 +88,10 @@ class _MyHomePageState extends State<MyHomePage> {
           if (result.isLoading) {
             return const Center(
               child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.yellow,
               ),
             );
           }
-
-          final stuff = result.data?['customers'];
 
           return CustomScrollView(
             physics: const BouncingScrollPhysics(),
@@ -105,13 +104,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   background: MyFlexibleAppBar(
                     numberOfCustomers: "530",
                     customerCount: "Your Customer Count",
-                    ),
+                  ),
                 ),
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                    final damage = stuff[index];
+                    final damage = result.data?['customers'][index];
+
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     );
                   },
-                  childCount: stuff.length,
+                  childCount: result.data?['customers'].length,
                 ),
               ),
             ],
@@ -170,6 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Refetch();
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => Issues(issues: true)),
+          // );
         },
         tooltip: 'Refresh',
         child: const Icon(Icons.workspaces_outlined),
